@@ -1,5 +1,6 @@
 package com.adlads.luma.stepDefinition;
 
+import com.adlads.luma.cucumber.Hooks;
 import com.adlads.luma.pageObjects.CreateAccountPagePO;
 import com.adlads.luma.pageObjects.HomePagePO;
 import com.adlads.luma.pageObjects.SignInPagePO;
@@ -17,18 +18,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 
 public class AccountManagementSteps {
-    WebDriver driver;
+    //WebDriver driver;
+    WebDriver driver = Hooks.driver; //driver element in our hook class
     @Given("^user is on create an account page$")
-    public void userIsOnCreateAnAccountPage() {
+    public void userIsOnCreateAnAccountPage() throws InterruptedException {
 
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://magento2-demo.magebit.com/");
        // driver.findElement(By.linkText("Create an Account")).click();
+        //Thread.sleep(5000);
+       // driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         HomePagePO homePagePO = new HomePagePO(driver);
         homePagePO.clickCreateAccountlink();
             }
@@ -59,7 +64,6 @@ public class AccountManagementSteps {
         Assert.assertEquals(expectedResult, actualResult);
         String text = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[1]/div[2]/div/div/div")).getText();
         System.out.println(text);
-        driver.close();
     }
 
 
@@ -68,6 +72,8 @@ public class AccountManagementSteps {
         String expectedResult = "Create New Customer Account";
         String actualResult = driver.getTitle();
         Assert.assertEquals(expectedResult,actualResult);
+        System.out.println(driver.findElement(By.cssSelector("#maincontent > div.page.messages > div:nth-child(2) > div > div > div")).getText());
+
 
     }
 
@@ -100,7 +106,7 @@ public class AccountManagementSteps {
         SignInPagePO signInPagePO = new SignInPagePO(driver);
         signInPagePO.clickSignInButton();
      //driver.findElement(By.xpath("/*[@id=\"send2\"]/span")).click();
-
+     driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
     }
 
     @Then("^my account page is displayed$")
@@ -109,6 +115,7 @@ public class AccountManagementSteps {
         String expectedResult = "Magento 2 Commerce (Enterprise) Demo - Magebit";
         String actualResult = driver.getTitle();
         Assert.assertEquals(expectedResult,actualResult);
+        System.out.println(driver.getTitle());
     }
 
 

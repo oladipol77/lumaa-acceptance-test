@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CreateAccountPagePO {
 
@@ -20,13 +23,21 @@ public class CreateAccountPagePO {
     @FindBy(xpath = "//*[@id=\"form-validate\"]/div/div[1]/button/span")
     public static WebElement CreateAccountButton;
 
+    // Declaring Explicit wait
+    //private WebDriverWait wait;
+
+
+
 
     public CreateAccountPagePO (WebDriver driver){
+       // wait = new WebDriverWait(driver,3);
+
         PageFactory.initElements(driver,this);
 
     }
 
     public void enterFirstName(String FirstName){
+       // wait.until(ExpectedConditions.visibilityOf(FirstNameField));
       FirstNameField.sendKeys(FirstName);
 
     }

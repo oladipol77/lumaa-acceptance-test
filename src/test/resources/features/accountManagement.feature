@@ -13,7 +13,7 @@ Feature: Account Management
 
     Examples:
    |FirstName|LastName|Email|Password|ConfirmPassword|
-   |Tom      |Adams   |Tomad18@gmail.com|Tom1234567|Tom1234567|
+   |Tom      |Adams   |Tomad37@gmail.com|Tom1234567|Tom1234567|
 
    @DuplicateCustomer
   Scenario Outline: Create account with valid email
@@ -25,7 +25,7 @@ Feature: Account Management
 
     Examples:
       |FirstName|LastName|Email|Password|ConfirmPassword|
-      |Tom      |Adams   |Tomad18@gmail.com|Tom1234567|Tom1234567|
+      |Tom      |Adams   |Tomad37@gmail.com|Tom1234567|Tom1234567|
 
 
      @SignIn
@@ -39,4 +39,4 @@ Feature: Account Management
 
        Examples:
        |Email|Password|
-       |Tomad18@gmail.com|Tom1234567|
+       |Tomad37@gmail.com|Tom1234567|
