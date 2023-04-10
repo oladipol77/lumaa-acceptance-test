@@ -62,8 +62,7 @@ public class AccountManagementSteps {
         String expectedResult = "My Account";
         String actualResult = driver.getTitle();
         Assert.assertEquals(expectedResult, actualResult);
-        String text = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[1]/div[2]/div/div/div")).getText();
-        System.out.println(text);
+
     }
 
 
@@ -106,7 +105,7 @@ public class AccountManagementSteps {
         SignInPagePO signInPagePO = new SignInPagePO(driver);
         signInPagePO.clickSignInButton();
      //driver.findElement(By.xpath("/*[@id=\"send2\"]/span")).click();
-     driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+    // driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
     }
 
     @Then("^my account page is displayed$")
